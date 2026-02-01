@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>个人主页</title>
+
+<style>
+/* ========= ① 主题变量（90%的修改都在这里）========= */
+:root {
+    --green-main: #6bbf8e;
+    --green-light: #eaf6f0;
+    --green-deep: #3f8f68;
+    --text-main: #2f3e36;
+}
+
+/* ========= ② 全局基础 ========= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #ffffff;
+    color: var(--text-main);
+    scroll-behavior: smooth;
+}
+
+/* ========= ③ 侧边栏 ========= */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 220px;
+    height: 100vh;
+    padding: 40px 20px;
+    background-color: var(--green-light);
+    border-right: 1px solid #d9eee3;
+}
+
+.sidebar h2 {
+    margin-bottom: 30px;
+    color: var(--green-deep);
+}
+
+/* 幸运草装饰 */
+.sidebar::after {
+    content: "🍀";
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+}
+
+/* 导航 */
+.nav {
+    list-style: none;
+    padding: 0;
+}
+
+.nav li {
+    margin-bottom: 14px;
+}
+
+.nav a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: var(--text-main);
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.nav a:hover {
+    background-color: var(--green-main);
+    color: white;
+    transform: translateX(6px);
+}
+
+/* ========= ④ 主体 ========= */
+.container {
+    margin-left: 220px;
+    padding: 40px;
+    max-width: 1100px;
+}
+
+/* ========= ⑤ 横幅 ========= */
+.banner {
+    height: 420px;
+    background-image: url("banner.jpg"); /* ← 换图只改这里 */
+    background-size: cover;
+    background-position: center;
+    border-radius: 18px;
+    margin-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.8s ease;
+}
+
+/* 遮罩层（保证文字清晰） */
+.banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(63, 143, 104, 0.15),
+        rgba(63, 143, 104, 0.45)
+    );
+}
+
+.banner-text {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    color: white;
+    z-index: 2;
+}
+
+.banner-text h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+.banner-text p {
+    margin-top: 10px;
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* ========= ⑥ 头像信息 ========= */
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 50px;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid var(--green-main);
+    object-fit: cover;
+}
+
+.profile-text h1 {
+    margin: 0;
+    color: var(--green-deep);
+}
+
+.profile-text p {
+    margin-top: 10px;
+    color: #5f756b;
+}
+
+/* ========= ⑦ 内容区块 ========= */
+.section {
+    position: relative;
+    background-color: var(--green-light);
+    padding: 28px;
+    margin-bottom: 40px;
+    border-radius: 14px;
+    animation: fadeUp 0.6s ease;
+}
+
+/* 小植物装饰 */
+.section::before {
+    content: "🌱";
+    position: absolute;
+    top: -14px;
+    right: 20px;
+}
+
+.section h2 {
+    margin-top: 0;
+    color: var(--green-deep);
+}
+
+/* ========= ⑧ 动画 ========= */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+footer {
+    text-align: center;
+    margin-top: 60px;
+    color: #8aa89b;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 侧边栏 -->
+<div class="sidebar">
+    <h2>导航</h2>
+    <ul class="nav">
+        <li><a href="#about">关于我</a></li>
+        <li><a href="#study">学习经历</a></li>
+        <li><a href="#projects">项目展示</a></li>
+        <li><a href="#contact">联系我</a></li>
+    </ul>
+</div>
+
+<!-- 主体 -->
+<div class="container">
+
+    <!-- 横幅 -->
+    <div class="banner">
+        <div class="banner-text">
+            <h1>你的名字</h1>
+            <p>清新 · 成长 · 温暖</p>
+        </div>
+    </div>
+
+    <!-- 头像信息 -->
+    <div class="profile">
+        <img src="avatar.jpg" class="avatar">
+        <div class="profile-text">
+            <h1>你的名字</h1>
+            <p>个人简介一句话</p>
+        </div>
+    </div>
+
+    <!-- 内容 -->
+    <div class="section" id="about">
+        <h2>关于我</h2>
+        <p>这里写你的介绍。</p>
+    </div>
+
+    <div class="section" id="study">
+        <h2>学习经历</h2>
+        <p>课程、方向、兴趣。</p>
+    </div>
+
+    <div class="section" id="projects">
+        <h2>项目展示</h2>
+        <p>项目或作品说明。</p>
+    </div>
+
+    <div class="section" id="contact">
+        <h2>联系我</h2>
+        <p>邮箱 / GitHub。</p>
+    </div>
+
+    <footer>
+        © 2026 你的名字
+    </footer>
+
+</div>
+
+</body>
+</html>
